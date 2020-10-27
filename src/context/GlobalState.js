@@ -18,8 +18,15 @@ export const GlobalProvider = ({ children }) => {
   // Actions
   const deleteTransaction = (id) => {
     dispatch({
-      type: "DELETE_TRANSACRION",
+      type: "DELETE_TRANSACTION",
       payload: id,
+    });
+  };
+
+  const createTransaction = (transaction) => {
+    dispatch({
+      type: "CREATE_TRANSACTION",
+      payload: transaction,
     });
   };
 
@@ -28,6 +35,7 @@ export const GlobalProvider = ({ children }) => {
       value={{
         transactions: state.transactions,
         deleteTransaction,
+        createTransaction,
       }}
     >
       {children}
