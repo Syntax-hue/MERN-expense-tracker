@@ -7,6 +7,11 @@ export const AppReducer = (state, action) => {
           (transaction) => transaction.id !== action.payload
         ),
       };
+    case "CREATE_TRANSACTION":
+      return {
+        ...state,
+        transactions: [action.payload, ...state.transactions],
+      };
     default:
       return state;
   }
