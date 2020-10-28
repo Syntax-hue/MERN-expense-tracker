@@ -4,12 +4,14 @@ expense tracker
 
 Node LTS
 
- #Server
+ # installation and running the app
+ 
+ in the root directory
 ```bash
 $ npm install
-$ npm run start:dev
 ```
- #Client
+then 
+
 ```bash
 $ npm install
 $ npm start
