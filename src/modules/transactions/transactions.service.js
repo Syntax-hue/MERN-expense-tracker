@@ -1,7 +1,14 @@
+const Transaction = require("./schema/transaction");
+
 module.exports = {
   async getAll() {
     try {
-      return "get all";
+      const transactions = await Transaction.find();
+      return {
+        success: true,
+        transactions,
+        count: transactions.length,
+      };
     } catch (e) {
       console.error(e.message || e);
     }
@@ -9,29 +16,56 @@ module.exports = {
 
   async getOne(id) {
     try {
-      return "get One";
+      return await Transaction.findById(id);
     } catch (e) {
       console.error(e.message);
     }
   },
 
-  async create(post_body) {
+  async create(text, amount) {
     try {
-      console.log("create");
+      const newTransaction = await Transaction.create({
+        text,
+        amount,
+      });
+
+      await newTransaction.save();
+      return {
+        success: true,
+        message: "transaction created",
+      };
     } catch (e) {
+      if (e.name === "ValidationError") {
+        const m = Object.values(e.errors).map((err) => err.message);
+        return {
+          status: 400,
+          m,
+        };
+      }
       console.error(e.message);
     }
   },
 
   async update(id, post_update) {
     try {
-      console.log("update");
+      return {
+        success: false,
+        message: "TODO",
+      };
     } catch (e) {
       console.error(e.message);
     }
   },
 
   async delete(id) {
-    console.log("delete");
+    const transaction = await Transaction.findById(id);
+    if (!transaction) {
+      return {
+        success: false,
+        message: "Transaction not found",
+      };
+    }
+
+    await transaction.remove();
   },
 };
