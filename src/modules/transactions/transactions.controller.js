@@ -21,9 +21,9 @@ module.exports = {
 
   async create(req, res, next) {
     try {
-      const { body } = req.body;
+      const { text, amount } = req.body;
 
-      res.send(await service.create(body));
+      res.send(await service.create(text, amount));
     } catch (error) {
       next(error);
     }
