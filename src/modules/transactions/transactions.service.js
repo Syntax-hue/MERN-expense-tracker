@@ -33,6 +33,7 @@ module.exports = {
       return {
         success: true,
         message: "transaction created",
+        transaction: newTransaction,
       };
     } catch (e) {
       if (e.name === "ValidationError") {

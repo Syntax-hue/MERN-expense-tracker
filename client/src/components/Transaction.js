@@ -13,7 +13,7 @@ export default function Transaction({ trans }) {
         {Math.abs(trans.amount)}
       </span>
       <button
-        onClick={() => deleteTransaction(trans.id)}
+        onClick={() => deleteTransaction(trans._id)}
         className="delete-btn"
       >
         x
