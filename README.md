@@ -1,6 +1,8 @@
-# MERN #React #Nodejs #MongoDB
+# MERN # React # Nodejs # MongoDB
 
+expense tracker
 
+Node LTS
 
  #Server
 ```bash
