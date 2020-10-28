@@ -1,10 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
+const express = require("express");
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+require("dotenv").config({ path: "../.env" });
+require("./db")();
+
+const app = express();
+
+app.use(express.json());
+app.use("/api/v1/", require("./modules"));
+
+module.exports = app;
